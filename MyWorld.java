@@ -29,6 +29,7 @@ public class MyWorld extends World
         addObject(jumper, getWidth() - 720, getHeight() - 225); // Letakkan Jumper di bawah layar pada posisi tengah
 
         addPlatforms();
+        coin();
     }
     
     // public void act() {
@@ -57,6 +58,11 @@ public class MyWorld extends World
             // actor.setLocation(actor.getX() + cameraOffsetX, actor.getY());
         // }
     // }
+    
+    private void coin() {
+        Coin coin1 = new Coin();
+        addObject(coin1, 180, 360 );
+    }
     
     private void addPlatforms() {
         int startingY = getHeight() - 100;
