@@ -31,32 +31,32 @@ public class MyWorld extends World
         addPlatforms();
     }
     
-    public void act() {
-        // Mengatur offset kamera secara horizontal mengikuti pergerakan karakter
-        cameraOffsetX = getWidth() / 2 - jumper.getX();
+    // public void act() {
+        // // Mengatur offset kamera secara horizontal mengikuti pergerakan karakter
+        // cameraOffsetX = getWidth() / 2 - jumper.getX();
 
-        // Batasi pergeseran kamera agar tetap dalam batas dunia
-        int worldWidth = getWidth();
-        int worldHeight = getHeight();
-        int halfWidth = worldWidth / 2;
+        // // Batasi pergeseran kamera agar tetap dalam batas dunia
+        // int worldWidth = getWidth();
+        // int worldHeight = getHeight();
+        // int halfWidth = worldWidth / 2;
 
-        // Batasi pergeseran kamera agar tidak keluar dari batas layar kiri dan kanan
-        if (cameraOffsetX > 0) {
-            cameraOffsetX = 0;
-        } else if (cameraOffsetX < -(worldWidth - halfWidth)) {
-            cameraOffsetX = -(worldWidth - halfWidth);
-        }
+        // // Batasi pergeseran kamera agar tidak keluar dari batas layar kiri dan kanan
+        // if (cameraOffsetX > 0) {
+            // cameraOffsetX = 0;
+        // } else if (cameraOffsetX < -(worldWidth - halfWidth)) {
+            // cameraOffsetX = -(worldWidth - halfWidth);
+        // }
 
-        // Menggeser seluruh dunia dengan offset kamera
-        shiftWorld();
-    }
+        // // Menggeser seluruh dunia dengan offset kamera
+        // shiftWorld();
+    // }
 
-    private void shiftWorld() {
-        for (Object obj : getObjects(null)) {
-            Actor actor = (Actor) obj;
-            actor.setLocation(actor.getX() + cameraOffsetX, actor.getY());
-        }
-    }
+    // private void shiftWorld() {
+        // for (Object obj : getObjects(null)) {
+            // Actor actor = (Actor) obj;
+            // actor.setLocation(actor.getX() + cameraOffsetX, actor.getY());
+        // }
+    // }
     
     private void addPlatforms() {
         int startingY = getHeight() - 100;
@@ -83,10 +83,28 @@ public class MyWorld extends World
         addObject(tiles4, 344, 316);
         
         Tiles tiles5 = new Tiles();
-        addObject(tiles5, 555, 165);
+        addObject(tiles5, 500, 165);
+        
+        Tiles tiles6 = new Tiles();
+        addObject(tiles6, 515, 366);
+        
+        Tiles tiles7 = new Tiles();
+        addObject(tiles7, 650, 415);
+        
+        Tiles tiles8 = new Tiles();
+        addObject(tiles8, 695, 306);
+        
+        Tiles tiles9 = new Tiles();
+        addObject(tiles9, 625, 85);
+        
+        Tiles tiles10 = new Tiles();
+        addObject(tiles10, 579, 235);
         
         
         Viles viles1 = new Viles();
         addObject(viles1, 389, 155);
+        
+        Viles viles2 = new Viles();
+        addObject(viles2, 729, 185);
     }
 }
