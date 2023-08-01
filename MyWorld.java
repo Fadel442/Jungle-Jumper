@@ -17,10 +17,20 @@ public class MyWorld extends World
     private int cameraOffsetX;
     private int cameraOffsetY;
     
+    private CoinBar coinBar1;
+    private CoinBar coinBar2;
+    private CoinBar coinBar3;
+    
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 450, 1); 
+        coinBar1 = new CoinBar();
+        coinBar2 = new CoinBar();
+        coinBar3 = new CoinBar();
+        addObject(coinBar1, 100, 50);
+        addObject(coinBar2, 150, 50);
+        addObject(coinBar3, 200, 50);
         prepare();
     }
     
