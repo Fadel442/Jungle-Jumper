@@ -17,10 +17,22 @@ public class MyWorld extends World
     private int cameraOffsetX;
     private int cameraOffsetY;
     
+    // private CoinBar coinBar1;
+    // private CoinBar coinBar2;
+    // private CoinBar coinBar3;
+    
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 450, 1); 
+        // coinBar1 = new CoinBar();
+        // coinBar2 = new CoinBar();
+        // coinBar3 = new CoinBar();
+        
+        //addObject(coinBar1, 100, 50);
+        //addObject(coinBar2, 100 , 150); // Atur posisi coinBar2
+        //addObject(coinBar3, 100 , 50);
+        
         prepare();
     }
     
@@ -62,6 +74,12 @@ public class MyWorld extends World
     private void coin() {
         Coin coin1 = new Coin();
         addObject(coin1, 180, 360 );
+        
+        Coin coin2 = new Coin();
+        addObject(coin2, 500, 130);
+        
+        Coin coin3 = new Coin();
+        addObject(coin3, 226, 110);
     }
     
     private void addPlatforms() {

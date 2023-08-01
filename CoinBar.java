@@ -8,12 +8,30 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class CoinBar extends Actor
 {
-    /**
-     * Act - do whatever the CoinBar wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act()
-    {
-        // Add your action code here.
+    private int coins;
+    private GreenfootImage coinImage;
+
+    public CoinBar() {
+        coins = 0;
+        coinImage = new GreenfootImage("coin.png"); // Gambar koin
+        updateImage();
+    }
+
+    public void addCoin() {
+        coins++;
+        updateImage();
+    }
+
+    private void updateImage() {
+        GreenfootImage image = new GreenfootImage(getImage());
+        image.clear();
+        for (int i = 0; i < coins; i++) {
+            image.drawImage(coinImage, i * (coinImage.getWidth() + 5), 0); // Menggambar koin secara berderet
+        }
+        setImage(image);
+    }
+
+    public int getCoins() {
+        return coins;
     }
 }

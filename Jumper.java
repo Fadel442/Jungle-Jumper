@@ -17,11 +17,19 @@ public class Jumper extends Actor
     private int acceleration = 1; // Kecepatan gravitasi
     private int moveSpeed = 4; // Kecepatan bergerak ke kiri dan kanan
     private boolean onGround = false;
+    
+    private CoinBar[] coinBars;
+    
+    public Jumper() {
+        coinBars = new CoinBar[3];
+        // Inisialisasi coinBars dengan referensi ke tiga CoinBar
+    }
 
     public void act() {
         applyGravity();
         checkKeys();
         checkCollision();
+        checkCoinCollision();
     }
 
     private void applyGravity() {
@@ -61,6 +69,26 @@ public class Jumper extends Actor
         } 
         else {
             onGround = false;
+        }
+    }
+    
+    private void checkCoinCollision() {
+        Actor coin = getOneIntersectingObject(Coin.class);
+        if (coin != null) {
+            World world = getWorld();
+            world.removeObject(coin);
+
+            // Cek coinBar mana yang kosong dan tambahkan koin ke coinBar tersebut
+            for (int i = 0; i < coinBars.length; i++) {
+                if (coinBars[i] == null || coinBars[i].getCoins() == 0) {
+                    if (coinBars[i] == null) {
+                        coinBars[i] = new CoinBar();
+                        world.addObject(coinBars[i], 100 + i * 75, 50); // Atur posisi coinBar yang baru
+                    }
+                    coinBars[i].addCoin();
+                    break;
+                }
+            }
         }
     }
 }
