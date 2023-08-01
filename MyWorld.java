@@ -31,6 +31,7 @@ public class MyWorld extends World
         addObject(coinBar1, 100, 50);
         addObject(coinBar2, 150, 50);
         addObject(coinBar3, 200, 50);
+        
         prepare();
     }
     
