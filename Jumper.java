@@ -42,7 +42,7 @@ public class Jumper extends Actor
     }
 
     private void checkKeys() {
-        if (Greenfoot.isKeyDown("space") && onGround) {
+        if (Greenfoot.isKeyDown("up") && onGround) {
             jump();
             //setLocation(getX(), getY()+1);
         }
