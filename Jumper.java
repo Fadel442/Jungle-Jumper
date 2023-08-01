@@ -30,6 +30,7 @@ public class Jumper extends Actor
         checkKeys();
         checkCollision();
         checkCoinCollision();
+        checkBottomBoundary();
     }
 
     private void applyGravity() {
@@ -90,5 +91,19 @@ public class Jumper extends Actor
                 }
             }
         }
+    }
+    
+    private void checkBottomBoundary() {
+        if (getY() >= getWorld().getHeight()) {
+            // Karakter menyentuh batas bawah, panggil metode karakter mati
+            die();
+        }
+    }
+    
+    public void die() {
+        // Aksi ketika karakter mati
+        //Greenfoot.playSound("game-over.wav"); // Mainkan suara game over
+        getWorld().removeObject(this); // Hapus karakter dari dunia
+        //Greenfoot.setWorld(new GameOverWorld()); // Ganti ke dunia game over
     }
 }
