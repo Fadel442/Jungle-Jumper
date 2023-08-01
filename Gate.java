@@ -13,10 +13,21 @@ public class Gate extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() {
-        checkCompletion();
+        //checkCompletion();
+        //checkCollisionWithJumper();
     }
     
-    
+    private void checkCollisionWithJumper() {
+        Actor jumper = getOneIntersectingObject(Jumper.class);
+        if (jumper != null) {
+            // Hapus objek Gate saat karakter menyentuhnya
+            getWorld().removeObject(this);
+            // Panggil method setCoinsClearedStatus() dari kelas MyWorld dan set nilai menjadi true
+            MyWorld world = (MyWorld) getWorld();
+            world.setCoinsClearedStatus(true);
+        }
+    }
+
 
     private void checkCompletion() {
         MyWorld world = (MyWorld) getWorld();

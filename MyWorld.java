@@ -14,11 +14,13 @@ public class MyWorld extends World
      * 
      */
     private Jumper jumper;
+    private Gate gate;
     private int cameraOffsetX;
     private int cameraOffsetY;
     
     private boolean areCoinsCleared = false;
-    
+   // private boolean isGateReached = false;
+    private boolean isJumperTouchingGate = false;
     
     public MyWorld()
     {    
@@ -31,7 +33,8 @@ public class MyWorld extends World
     private void prepare() {
         jumper = new Jumper();
         addObject(jumper, getWidth() - 720, getHeight() - 225); // Letakkan Jumper di bawah layar pada posisi tengah
-        addObject(new Gate(), 625, 45);
+        gate = new Gate();
+        addObject(gate, 625, 45);
         
         addPlatforms();
         coin();
@@ -41,10 +44,12 @@ public class MyWorld extends World
         if (!areCoinsCleared) {
             // Periksa apakah semua koin telah dihapus
             areCoinsCleared = areAllCoinsCleared();
-        } else {
-            // Berpindah ke LevelWorld setelah semua koin dihapus
-            Greenfoot.setWorld(new LevelWorld());
         }
+
+        if (areCoinsCleared && jumper.isTouchingGate()) {
+        // Berpindah ke LevelWorld setelah semua koin dihapus dan karakter menyentuh Gate
+        Greenfoot.setWorld(new LevelWorld());
+    }
     }
     
     private void coin() {
@@ -61,6 +66,17 @@ public class MyWorld extends World
     public boolean areAllCoinsCleared() {
         return getObjects(Coin.class).isEmpty();
     }
+    
+    public void setCoinsClearedStatus(boolean cleared) {
+        areCoinsCleared = cleared;
+    }
+    
+    
+   // private boolean isJumperTouchingGate() {
+        // Jumper jumper = (Jumper) getObjects(Jumper.class).get(0);
+        // Actor gate = jumper.getOneIntersectingObject(Gate.class);
+        // return gate != null;
+    // }
     
     // public boolean isAllCoinBarsFilled() {
         // for (Object obj : getObjects(CoinBar.class)) {

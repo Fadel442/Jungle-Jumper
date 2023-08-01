@@ -31,6 +31,7 @@ public class Jumper extends Actor
         checkCollision();
         checkCoinCollision();
         checkBottomBoundary();
+        
     }
 
     private void applyGravity() {
@@ -73,6 +74,10 @@ public class Jumper extends Actor
         }
     }
     
+    private void chceckGateCollision() {
+        Actor gate = getOneIntersectingObject(Gate.class);
+    }
+    
     private void checkCoinCollision() {
         Actor coin = getOneIntersectingObject(Coin.class);
         if (coin != null) {
@@ -98,6 +103,10 @@ public class Jumper extends Actor
             // Karakter menyentuh batas bawah, panggil metode karakter mati
             die();
         }
+    }
+    
+    public boolean isTouchingGate() {
+        return isTouching(Gate.class);
     }
     
     public void die() {
