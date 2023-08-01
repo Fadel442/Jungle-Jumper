@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class CoinBar extends Actor
 {
+    private int targetCoins;
     private int coins;
     private GreenfootImage coinImage;
 
@@ -20,6 +21,10 @@ public class CoinBar extends Actor
     public void addCoin() {
         coins++;
         updateImage();
+    }
+    
+    public boolean isFilled() {
+        return coins >= targetCoins;
     }
 
     private void updateImage() {

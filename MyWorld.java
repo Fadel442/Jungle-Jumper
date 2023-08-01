@@ -14,24 +14,18 @@ public class MyWorld extends World
      * 
      */
     private Jumper jumper;
+    private Gate gate;
     private int cameraOffsetX;
     private int cameraOffsetY;
     
-    // private CoinBar coinBar1;
-    // private CoinBar coinBar2;
-    // private CoinBar coinBar3;
+    private boolean areCoinsCleared = false;
+   // private boolean isGateReached = false;
+    private boolean isJumperTouchingGate = false;
     
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 450, 1); 
-        // coinBar1 = new CoinBar();
-        // coinBar2 = new CoinBar();
-        // coinBar3 = new CoinBar();
-        
-        //addObject(coinBar1, 100, 50);
-        //addObject(coinBar2, 100 , 150); // Atur posisi coinBar2
-        //addObject(coinBar3, 100 , 50);
         
         prepare();
     }
@@ -39,37 +33,24 @@ public class MyWorld extends World
     private void prepare() {
         jumper = new Jumper();
         addObject(jumper, getWidth() - 720, getHeight() - 225); // Letakkan Jumper di bawah layar pada posisi tengah
-
+        gate = new Gate();
+        addObject(gate, 625, 45);
+        
         addPlatforms();
         coin();
     }
     
-    // public void act() {
-        // // Mengatur offset kamera secara horizontal mengikuti pergerakan karakter
-        // cameraOffsetX = getWidth() / 2 - jumper.getX();
+     public void act() {
+        if (!areCoinsCleared) {
+            // Periksa apakah semua koin telah dihapus
+            areCoinsCleared = areAllCoinsCleared();
+        }
 
-        // // Batasi pergeseran kamera agar tetap dalam batas dunia
-        // int worldWidth = getWidth();
-        // int worldHeight = getHeight();
-        // int halfWidth = worldWidth / 2;
-
-        // // Batasi pergeseran kamera agar tidak keluar dari batas layar kiri dan kanan
-        // if (cameraOffsetX > 0) {
-            // cameraOffsetX = 0;
-        // } else if (cameraOffsetX < -(worldWidth - halfWidth)) {
-            // cameraOffsetX = -(worldWidth - halfWidth);
-        // }
-
-        // // Menggeser seluruh dunia dengan offset kamera
-        // shiftWorld();
-    // }
-
-    // private void shiftWorld() {
-        // for (Object obj : getObjects(null)) {
-            // Actor actor = (Actor) obj;
-            // actor.setLocation(actor.getX() + cameraOffsetX, actor.getY());
-        // }
-    // }
+        if (areCoinsCleared && jumper.isTouchingGate()) {
+        // Berpindah ke LevelWorld setelah semua koin dihapus dan karakter menyentuh Gate
+        Greenfoot.setWorld(new LevelWorld());
+    }
+    }
     
     private void coin() {
         Coin coin1 = new Coin();
@@ -80,6 +61,35 @@ public class MyWorld extends World
         
         Coin coin3 = new Coin();
         addObject(coin3, 226, 110);
+    }
+    
+    public boolean areAllCoinsCleared() {
+        return getObjects(Coin.class).isEmpty();
+    }
+    
+    public void setCoinsClearedStatus(boolean cleared) {
+        areCoinsCleared = cleared;
+    }
+    
+    
+   // private boolean isJumperTouchingGate() {
+        // Jumper jumper = (Jumper) getObjects(Jumper.class).get(0);
+        // Actor gate = jumper.getOneIntersectingObject(Gate.class);
+        // return gate != null;
+    // }
+    
+    // public boolean isAllCoinBarsFilled() {
+        // for (Object obj : getObjects(CoinBar.class)) {
+            // CoinBar coinBar = (CoinBar) obj;
+            // if (!coinBar.isFilled()) {
+                // return false;
+            // }
+        // }
+        // return true;
+    // }
+    
+    public void moveToNextLevel() {
+        Greenfoot.setWorld(new LevelWorld()); // Ganti ke dunia selanjutnya
     }
     
     private void addPlatforms() {
