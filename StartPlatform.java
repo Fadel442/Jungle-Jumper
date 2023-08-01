@@ -14,7 +14,7 @@ public class StartPlatform extends Platform
      */
     public StartPlatform() {
         // Ganti ukuran platform sesuai keinginan
-        GreenfootImage platformImage = new GreenfootImage(600, 20);
+        GreenfootImage platformImage = new GreenfootImage(800, 20);
         platformImage.setColor(Color.GREEN); // Ganti warna platform sesuai keinginan
         platformImage.fill();
         setImage(platformImage);
@@ -22,6 +22,15 @@ public class StartPlatform extends Platform
     
     public void act()
     {
+        checkCollision();
         // Add your action code here.
+    }
+    
+    private void checkCollision() {
+        Actor jumper = getOneIntersectingObject(Jumper.class);
+        if (jumper != null) {
+            // Musuh menyentuh karakter, panggil metode karakter mati
+            ((Jumper) jumper).die();
+        }
     }
 }

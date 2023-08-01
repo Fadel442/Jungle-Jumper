@@ -87,7 +87,7 @@ public class MyWorld extends World
         int startingX = getWidth() - 700;
         
         StartPlatform platform = new StartPlatform();
-        //addObject(platform, getWidth() / 2, getHeight());
+        addObject(platform, getWidth()/2, getHeight());
         
        // for(int i = 0; i < 3; i++){
         //    Tiles tiles = new Tiles();
