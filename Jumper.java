@@ -83,7 +83,7 @@ public class Jumper extends Actor
                 if (coinBars[i] == null || coinBars[i].getCoins() == 0) {
                     if (coinBars[i] == null) {
                         coinBars[i] = new CoinBar();
-                        world.addObject(coinBars[i], 100 + i * 200, 50); // Atur posisi coinBar yang baru
+                        world.addObject(coinBars[i], 100 + i * 50, 50); // Atur posisi coinBar yang baru
                     }
                     coinBars[i].addCoin();
                     break;
