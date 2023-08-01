@@ -73,6 +73,9 @@ public class MyWorld extends World
     private void coin() {
         Coin coin1 = new Coin();
         addObject(coin1, 180, 360 );
+        
+        Coin coin2 = new Coin();
+        addObject(coin2, 500, 130);
     }
     
     private void addPlatforms() {
