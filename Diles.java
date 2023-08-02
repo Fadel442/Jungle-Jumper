@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Diles extends Platform
 {
+    private GreenfootSound screamSound;
     /**
      * Act - do whatever the Diles wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -18,6 +19,8 @@ public class Diles extends Platform
         platformImage.setColor(Color.YELLOW); // Ganti warna platform sesuai keinginan
         platformImage.fill();
         setImage(platformImage);
+        
+        screamSound = new GreenfootSound("sfx_scream.mp3");
     }
     
     public void act()
@@ -30,6 +33,7 @@ public class Diles extends Platform
         Actor jumper = getOneIntersectingObject(Jumper.class);
         if (jumper != null) {
             // Musuh menyentuh karakter, panggil metode karakter mati
+            screamSound.play();
             ((Jumper) jumper).die();
         }
     }

@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class StartPlatform extends Platform
 {
+    private GreenfootSound deadSound;
     /**
      * Act - do whatever the StartPlatform wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -18,6 +19,8 @@ public class StartPlatform extends Platform
         platformImage.setColor(Color.GREEN); // Ganti warna platform sesuai keinginan
         platformImage.fill();
         setImage(platformImage);
+        
+        deadSound = new GreenfootSound("sfx_water.mp3");
     }
     
     public void act()
@@ -30,6 +33,7 @@ public class StartPlatform extends Platform
         Actor jumper = getOneIntersectingObject(Jumper.class);
         if (jumper != null) {
             // Musuh menyentuh karakter, panggil metode karakter mati
+            deadSound.play();
             ((Jumper) jumper).die();
         }
     }

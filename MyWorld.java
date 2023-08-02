@@ -22,7 +22,8 @@ public class MyWorld extends World
    // private boolean isGateReached = false;
     private boolean isJumperTouchingGate = false;
     
-    // private GreenfootSound backgroundSound;
+    private boolean isGameStarted = false;
+    private GreenfootSound backgroundSound;
     
     public MyWorld()
     {    
@@ -32,30 +33,69 @@ public class MyWorld extends World
         // backgroundSound.playLoop();
         
         setPaintOrder(Platform.class, Jumper.class, Gate.class);
-        prepare();
+        //prepare();
+        
     }
     
-    private void prepare() {
+    // private void prepare() {
+        // jumper = new Jumper();
+        // addObject(jumper, getWidth() - 720, getHeight() - 225); // Letakkan Jumper di bawah layar pada posisi tengah
+        // gate = new Gate();
+        // addObject(gate, 625, 45);
+        
+        // addPlatforms();
+        // coin();
+    // }
+    
+     public void act() {
+        //tes
+        if (!isGameStarted) {
+            // Jika permainan belum dimulai, tampilkan pesan "Press SPACE to Start"
+            showText("Press SPACE to Start", getWidth() / 2, getHeight() / 2);
+            
+            // Cek apakah tombol SPACE ditekan untuk memulai permainan
+            if (Greenfoot.isKeyDown("space")) {
+                // Memulai permainan
+                isGameStarted = true;
+                startGame();
+            }
+        } else {
+            // Jika permainan sudah dimulai, hapus pesan "Press SPACE to Start"
+            showText("", getWidth() / 2, getHeight() / 2);
+
+            if (!areCoinsCleared) {
+            // Periksa apakah semua koin telah dihapus
+            areCoinsCleared = areAllCoinsCleared();
+            }
+
+            if (areCoinsCleared && jumper.isTouchingGate()) {
+            // Berpindah ke LevelWorld setelah semua koin dihapus dan karakter menyentuh Gate
+            Greenfoot.setWorld(new LevelWorld());
+            }
+            
+            // Memulai sound loop hanya setelah permainan dimulai
+            if (backgroundSound == null) {
+                backgroundSound = new GreenfootSound("bgs_jungle.wav");
+                backgroundSound.playLoop();
+            }
+        }
+    }
+    
+    private void startGame() {
         jumper = new Jumper();
         addObject(jumper, getWidth() - 720, getHeight() - 225); // Letakkan Jumper di bawah layar pada posisi tengah
         gate = new Gate();
         addObject(gate, 625, 45);
         
+        setupGame();
+    }
+
+    private void setupGame() {
         addPlatforms();
         coin();
     }
     
-     public void act() {
-        if (!areCoinsCleared) {
-            // Periksa apakah semua koin telah dihapus
-            areCoinsCleared = areAllCoinsCleared();
-        }
-
-        if (areCoinsCleared && jumper.isTouchingGate()) {
-        // Berpindah ke LevelWorld setelah semua koin dihapus dan karakter menyentuh Gate
-        Greenfoot.setWorld(new LevelWorld());
-    }
-    }
+    
     
     private void coin() {
         Coin coin1 = new Coin();
