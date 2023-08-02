@@ -22,10 +22,14 @@ public class MyWorld extends World
    // private boolean isGateReached = false;
     private boolean isJumperTouchingGate = false;
     
+    // private GreenfootSound backgroundSound;
+    
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 450, 1); 
+        // backgroundSound = new GreenfootSound("bgs_jungle.wav");
+        // backgroundSound.playLoop();
         
         setPaintOrder(Platform.class, Jumper.class, Gate.class);
         prepare();
