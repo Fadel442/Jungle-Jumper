@@ -144,7 +144,7 @@ public class Jumper extends Actor
     
     public void die() {
         // Aksi ketika karakter mati
-        
+        ((MyWorld) getWorld()).gameOver();
         getWorld().removeObject(this); // Hapus karakter dari dunia
         //Greenfoot.setWorld(new GameOverWorld()); // Ganti ke dunia game over
     }

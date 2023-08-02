@@ -23,6 +23,7 @@ public class MyWorld extends World
     private boolean isJumperTouchingGate = false;
     
     private boolean isGameStarted = false;
+    private boolean isGameOver = false;
     private GreenfootSound backgroundSound;
     
     public MyWorld()
@@ -49,7 +50,7 @@ public class MyWorld extends World
     
      public void act() {
         //tes
-        if (!isGameStarted) {
+        if (!isGameStarted && !isGameOver) {
             // Jika permainan belum dimulai, tampilkan pesan "Press SPACE to Start"
             showText("Press SPACE to Start", getWidth() / 2, getHeight() / 2);
             
@@ -58,7 +59,16 @@ public class MyWorld extends World
                 // Memulai permainan
                 isGameStarted = true;
                 startGame();
+            } 
+        }  else if (isGameOver) {
+            // Jika permainan berakhir, pindah ke UI "Game Over"
+            Greenfoot.setWorld(new GameOver());
+            
+            // Hentikan music background dan putar sound "Game Over"
+            if (backgroundSound != null) {
+                backgroundSound.stop();
             }
+            Greenfoot.playSound("bgs_gameOver.mp3");
         } else {
             // Jika permainan sudah dimulai, hapus pesan "Press SPACE to Start"
             showText("", getWidth() / 2, getHeight() / 2);
@@ -95,7 +105,9 @@ public class MyWorld extends World
         coin();
     }
     
-    
+    public void gameOver() {
+        isGameOver = true;
+    }
     
     private void coin() {
         Coin coin1 = new Coin();

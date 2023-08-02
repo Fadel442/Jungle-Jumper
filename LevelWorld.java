@@ -33,6 +33,10 @@ public class LevelWorld extends World
         addPlatform();
     }
     
+    public void act(){
+        
+    }
+    
     private void addCoin() {
         Coin coin1 = new Coin();
         addObject(coin1, 160, 320);
