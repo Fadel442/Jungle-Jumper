@@ -110,8 +110,6 @@ public class MyWorld extends World
         isGameOver = true;
     }
     
-   
-    
     private void coin() {
         Coin coin1 = new Coin();
         addObject(coin1, 180, 360 );
