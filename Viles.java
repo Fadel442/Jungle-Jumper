@@ -14,9 +14,8 @@ public class Viles extends Platform
      */
     
     public Viles() {
-        // Ganti ukuran platform sesuai keinginan
         GreenfootImage platformImage = new GreenfootImage(30, 125);
-        platformImage.setColor(Color.RED); // Ganti warna platform sesuai keinginan
+        platformImage.setColor(Color.RED); 
         platformImage.fill();
         setImage(platformImage);
     }

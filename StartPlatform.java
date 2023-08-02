@@ -14,9 +14,8 @@ public class StartPlatform extends Platform
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public StartPlatform() {
-        // Ganti ukuran platform sesuai keinginan
         GreenfootImage platformImage = new GreenfootImage(800, 20);
-        platformImage.setColor(Color.GREEN); // Ganti warna platform sesuai keinginan
+        platformImage.setColor(Color.GREEN); 
         platformImage.fill();
         setImage(platformImage);
         
@@ -26,13 +25,11 @@ public class StartPlatform extends Platform
     public void act()
     {
         checkCollision();
-        // Add your action code here.
     }
     
     private void checkCollision() {
         Actor jumper = getOneIntersectingObject(Jumper.class);
         if (jumper != null) {
-            // Musuh menyentuh karakter, panggil metode karakter mati
             deadSound.play();
             ((Jumper) jumper).die();
         }

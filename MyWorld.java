@@ -15,11 +15,10 @@ public class MyWorld extends World
      */
     private Jumper jumper;
     private Gate gate;
-    private int cameraOffsetX;
-    private int cameraOffsetY;
+    // private int cameraOffsetX;
+    // private int cameraOffsetY;
     
     private boolean areCoinsCleared = false;
-   // private boolean isGateReached = false;
     private boolean isJumperTouchingGate = false;
     
     private boolean isGameStarted = false;
@@ -30,29 +29,13 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 450, 1); 
-        // backgroundSound = new GreenfootSound("bgs_jungle.wav");
-        // backgroundSound.playLoop();
         
         setPaintOrder(Platform.class, Jumper.class, Gate.class);
-        //prepare();
-        
     }
     
-    // private void prepare() {
-        // jumper = new Jumper();
-        // addObject(jumper, getWidth() - 720, getHeight() - 225); // Letakkan Jumper di bawah layar pada posisi tengah
-        // gate = new Gate();
-        // addObject(gate, 625, 45);
-        
-        // addPlatforms();
-        // coin();
-    // }
-    
      public void act() {
-        //tes
         prep();
         gameOverCheck();
-        
     }
     
     private void prep() {
@@ -77,7 +60,7 @@ public class MyWorld extends World
 
             if (areCoinsCleared && jumper.isTouchingGate()) {
             // Berpindah ke LevelWorld setelah semua koin dihapus dan karakter menyentuh Gate
-            stopBackgroundSound();
+            backgroundSound.stop();
             Greenfoot.setWorld(new LevelWorld());
             }
             
@@ -94,6 +77,14 @@ public class MyWorld extends World
             // Jika permainan berakhir, pindah ke UI "Game Over"
             Greenfoot.setWorld(new GameOver());
             //Hentikan music background dan putar sound "Game Over"
+            if (backgroundSound != null) {
+                backgroundSound.stop();
+            }
+            Greenfoot.playSound("bgs_gameOver.mp3");
+        } 
+        if(areCoinsCleared && isGameOver) {
+            System.out.println();
+            Greenfoot.setWorld(new GameOver());
             if (backgroundSound != null) {
                 backgroundSound.stop();
             }
@@ -119,10 +110,6 @@ public class MyWorld extends World
         isGameOver = true;
     }
     
-    public void stopBackgroundSound() {
-        backgroundSound.stop();
-    }
-    
     private void coin() {
         Coin coin1 = new Coin();
         addObject(coin1, 180, 360 );
@@ -142,25 +129,8 @@ public class MyWorld extends World
         areCoinsCleared = cleared;
     }
     
-    
-   // private boolean isJumperTouchingGate() {
-        // Jumper jumper = (Jumper) getObjects(Jumper.class).get(0);
-        // Actor gate = jumper.getOneIntersectingObject(Gate.class);
-        // return gate != null;
-    // }
-    
-    // public boolean isAllCoinBarsFilled() {
-        // for (Object obj : getObjects(CoinBar.class)) {
-            // CoinBar coinBar = (CoinBar) obj;
-            // if (!coinBar.isFilled()) {
-                // return false;
-            // }
-        // }
-        // return true;
-    // }
-    
     public void moveToNextLevel() {
-        Greenfoot.setWorld(new LevelWorld()); // Ganti ke dunia selanjutnya
+        Greenfoot.setWorld(new LevelWorld()); 
     }
     
     private void addPlatforms() {
@@ -170,11 +140,7 @@ public class MyWorld extends World
         StartPlatform platform = new StartPlatform();
         addObject(platform, getWidth()/2, getHeight());
         
-       // for(int i = 0; i < 3; i++){
-        //    Tiles tiles = new Tiles();
-        //    addObject(tiles, startingX , startingY - (i * 135));
-        //}
-        
+        //Horizontal Tiles
         Tiles tiles1 = new Tiles();
         addObject(tiles1, 80, 287);
         
@@ -205,7 +171,7 @@ public class MyWorld extends World
         Tiles tiles10 = new Tiles();
         addObject(tiles10, 579, 235);
         
-        
+        //Vertical Tiles
         Viles viles1 = new Viles();
         addObject(viles1, 389, 155);
         

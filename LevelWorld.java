@@ -11,6 +11,8 @@ public class LevelWorld extends World
     private Jumper jumper;
     private Gate gate;
     private boolean isGameOver = false;
+    private boolean areCoinsCleared = false;
+    private boolean isJumperTouchingGate = false;
     
     private GreenfootSound backgroundSound;
 
@@ -43,19 +45,45 @@ public class LevelWorld extends World
                 backgroundSound.playLoop();
             }
         
+        coinCheck();
+        gameOverCheck();
+    }
+    
+    private void gameOverCheck() {
         if (isGameOver) {
             // Jika permainan berakhir, pindah ke UI "Game Over"
             Greenfoot.setWorld(new GameOver());
+            //Hentikan music background dan putar sound "Game Over"
             if (backgroundSound != null) {
                 backgroundSound.stop();
             }
-            
             Greenfoot.playSound("bgs_gameOver.mp3");
-        }
+        } 
+    }
+    
+    private void coinCheck() {
+        if (!areCoinsCleared) {
+            // Periksa apakah semua koin telah dihapus
+            areCoinsCleared = areAllCoinsCleared();
+            }
+
+            if (areCoinsCleared && jumper.isTouchingGate()) {
+            // Berpindah ke LevelWorld setelah semua koin dihapus dan karakter menyentuh Gate
+            backgroundSound.stop();
+            Greenfoot.setWorld(new WorldTiga());
+            }
     }
     
     public void gameOver() {
         isGameOver = true;
+    }
+    
+    public boolean areAllCoinsCleared() {
+        return getObjects(Coin.class).isEmpty();
+    }
+    
+    public void setCoinsClearedStatus(boolean cleared) {
+        areCoinsCleared = cleared;
     }
     
     private void addCoin() {

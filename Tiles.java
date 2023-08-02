@@ -13,9 +13,8 @@ public class Tiles extends Platform
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public Tiles() {
-        // Ganti ukuran platform sesuai keinginan
         GreenfootImage platformImage = new GreenfootImage(100, 20);
-        platformImage.setColor(Color.BLUE); // Ganti warna platform sesuai keinginan
+        platformImage.setColor(Color.BLUE); 
         platformImage.fill();
         setImage(platformImage);
     }
