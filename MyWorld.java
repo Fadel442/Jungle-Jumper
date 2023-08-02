@@ -45,12 +45,10 @@ public class MyWorld extends World
             
             // Cek apakah tombol SPACE ditekan untuk memulai permainan
             if (Greenfoot.isKeyDown("space")) {
-                // Memulai permainan
                 isGameStarted = true;
                 startGame();
             } 
         }   else {
-            // Jika permainan sudah dimulai, hapus pesan "Press SPACE to Start"
             showText("", getWidth() / 2, getHeight() / 2);
 
             if (!areCoinsCleared) {
@@ -59,7 +57,6 @@ public class MyWorld extends World
             }
 
             if (areCoinsCleared && jumper.isTouchingGate()) {
-            // Berpindah ke LevelWorld setelah semua koin dihapus dan karakter menyentuh Gate
             backgroundSound.stop();
             Greenfoot.setWorld(new LevelWorld());
             }
@@ -74,22 +71,13 @@ public class MyWorld extends World
     
     private void gameOverCheck() {
         if (isGameOver) {
-            // Jika permainan berakhir, pindah ke UI "Game Over"
-            Greenfoot.setWorld(new GameOver());
-            //Hentikan music background dan putar sound "Game Over"
             if (backgroundSound != null) {
                 backgroundSound.stop();
             }
+            Greenfoot.delay(100);
+            Greenfoot.setWorld(new GameOver());
             Greenfoot.playSound("bgs_gameOver.mp3");
         } 
-        if(areCoinsCleared && isGameOver) {
-            System.out.println();
-            Greenfoot.setWorld(new GameOver());
-            if (backgroundSound != null) {
-                backgroundSound.stop();
-            }
-            Greenfoot.playSound("bgs_gameOver.mp3");
-        }
     }
     
     private void startGame() {

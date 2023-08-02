@@ -138,6 +138,9 @@ public class Jumper extends Actor
         else if(currWorld instanceof LevelWorld) {
             ((LevelWorld) getWorld()).gameOver();
         }
+        else if(currWorld instanceof WorldTiga) {
+            ((WorldTiga) getWorld()).gameOver();
+        }
         getWorld().removeObject(this); // Hapus karakter dari dunia
     }
 }

@@ -51,12 +51,11 @@ public class LevelWorld extends World
     
     private void gameOverCheck() {
         if (isGameOver) {
-            // Jika permainan berakhir, pindah ke UI "Game Over"
-            Greenfoot.setWorld(new GameOver());
-            //Hentikan music background dan putar sound "Game Over"
             if (backgroundSound != null) {
                 backgroundSound.stop();
             }
+            Greenfoot.delay(100);
+            Greenfoot.setWorld(new GameOver());
             Greenfoot.playSound("bgs_gameOver.mp3");
         } 
     }
