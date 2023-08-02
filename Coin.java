@@ -8,10 +8,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Coin extends Actor
 {
+    private GreenfootSound getCoinSound;
+    
     /**
      * Act - do whatever the Coin wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    
+    // public Coin() {
+        // getCoinSound = new GreenfootSound("sfx_coin.mp3");
+    // }
     public void act()
     {
         checkCollision();
