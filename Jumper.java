@@ -16,7 +16,9 @@ public class Jumper extends Actor
     private int jumpStrength = -15; // Kekuatan lompatan
     private int acceleration = 1; // Kecepatan gravitasi
     private int moveSpeed = 4; // Kecepatan bergerak ke kiri dan kanan
+    private int moveVertical = 4;
     private boolean onGround = false;
+    private boolean onVerticalPlatform = false; 
     
     private CoinBar[] coinBars;
     
@@ -42,9 +44,19 @@ public class Jumper extends Actor
     }
 
     private void checkKeys() {
-        if (Greenfoot.isKeyDown("up") && onGround) {
+        if (Greenfoot.isKeyDown("space") && onGround) {
             jump();
             //setLocation(getX(), getY()+1);
+        }
+        
+        else if(Greenfoot.isKeyDown("up") && onVerticalPlatform) {
+            moveUpDown();
+            setLocation(getX(), getY() - 1);
+        }
+        
+        else if(Greenfoot.isKeyDown("down") && onVerticalPlatform) {
+            moveUpDown(); // Bergerak ke bawah
+            setLocation(getX(), getY() + 1);
         }
 
         else if (Greenfoot.isKeyDown("left")) {
@@ -62,6 +74,12 @@ public class Jumper extends Actor
         verticalSpeed = jumpStrength;
         onGround = false;
     }
+    
+    private void moveUpDown() {
+        verticalSpeed = moveVertical; // Mengatur kecepatan vertikal untuk bergerak ke bawah
+        onGround = false;
+        onVerticalPlatform = false; // Reset penanda saat bergerak ke bawah
+    }
 
     private void checkCollision() {
         // Cek apakah karakter menyentuh platform di bagian bawahnya
@@ -71,6 +89,12 @@ public class Jumper extends Actor
         } 
         else {
             onGround = false;
+        }
+        
+        if (isTouching(Viles.class) && verticalSpeed >= 0) {
+            verticalSpeed = 0;
+            onGround = true;
+            onVerticalPlatform = true; // Set penanda saat berada di atas VerticalPlatform
         }
     }
     
