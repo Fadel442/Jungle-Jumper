@@ -22,9 +22,16 @@ public class Jumper extends Actor
     
     private CoinBar[] coinBars;
     
+    private GreenfootSound jumpSound;
+    
+    private GreenfootSound getCoinSound;
+    
     public Jumper() {
         coinBars = new CoinBar[3];
         // Inisialisasi coinBars dengan referensi ke tiga CoinBar
+        jumpSound = new GreenfootSound("sfx_jump.mp3");
+        getCoinSound = new GreenfootSound("sfx_coin.mp3");
+        
     }
 
     public void act() {
@@ -32,7 +39,7 @@ public class Jumper extends Actor
         checkKeys();
         checkCollision();
         checkCoinCollision();
-        checkBottomBoundary();
+        //checkBottomBoundary();
         
     }
 
@@ -46,6 +53,7 @@ public class Jumper extends Actor
     private void checkKeys() {
         if (Greenfoot.isKeyDown("space") && onGround) {
             jump();
+            jumpSound.play();
             //setLocation(getX(), getY()+1);
         }
         
@@ -98,14 +106,15 @@ public class Jumper extends Actor
         }
     }
     
-    private void chceckGateCollision() {
-        Actor gate = getOneIntersectingObject(Gate.class);
-    }
+    // private void chceckGateCollision() {
+        // Actor gate = getOneIntersectingObject(Gate.class);
+    // }
     
     private void checkCoinCollision() {
         Actor coin = getOneIntersectingObject(Coin.class);
         if (coin != null) {
             World world = getWorld();
+            getCoinSound.play();
             world.removeObject(coin);
 
             // Cek coinBar mana yang kosong dan tambahkan koin ke coinBar tersebut
@@ -122,12 +131,12 @@ public class Jumper extends Actor
         }
     }
     
-    private void checkBottomBoundary() {
-        if (getY() >= getWorld().getHeight()) {
-            // Karakter menyentuh batas bawah, panggil metode karakter mati
-            die();
-        }
-    }
+    // private void checkBottomBoundary() {
+        // if (getY() >= getWorld().getHeight()) {
+            // // Karakter menyentuh batas bawah, panggil metode karakter mati
+            // die();
+        // }
+    // }
     
     public boolean isTouchingGate() {
         return isTouching(Gate.class);
@@ -135,7 +144,7 @@ public class Jumper extends Actor
     
     public void die() {
         // Aksi ketika karakter mati
-        //Greenfoot.playSound("game-over.wav"); // Mainkan suara game over
+        
         getWorld().removeObject(this); // Hapus karakter dari dunia
         //Greenfoot.setWorld(new GameOverWorld()); // Ganti ke dunia game over
     }
