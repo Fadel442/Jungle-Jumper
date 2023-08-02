@@ -38,6 +38,8 @@ public class LevelWorld extends World
     }
     
     public void act(){
+        
+        
         if (backgroundSound == null) {
                 backgroundSound = new GreenfootSound("bgs_jungle.wav");
                 backgroundSound.playLoop();

@@ -14,7 +14,7 @@ public class CoinBar extends Actor
 
     public CoinBar() {
         coins = 0;
-        coinImage = new GreenfootImage("coin.png"); // Gambar koin
+        coinImage = new GreenfootImage("coin.png"); 
         updateImage();
     }
 

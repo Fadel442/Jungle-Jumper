@@ -14,9 +14,8 @@ public class Diles extends Platform
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public Diles() {
-        // Ganti ukuran platform sesuai keinginan
         GreenfootImage platformImage = new GreenfootImage(150, 20);
-        platformImage.setColor(Color.YELLOW); // Ganti warna platform sesuai keinginan
+        platformImage.setColor(Color.YELLOW);
         platformImage.fill();
         setImage(platformImage);
         
@@ -32,7 +31,6 @@ public class Diles extends Platform
     private void checkCollision() {
         Actor jumper = getOneIntersectingObject(Jumper.class);
         if (jumper != null) {
-            // Musuh menyentuh karakter, panggil metode karakter mati
             screamSound.play();
             ((Jumper) jumper).die();
         }

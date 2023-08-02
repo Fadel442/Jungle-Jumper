@@ -16,7 +16,7 @@ public class Coin extends Actor
      */
     
     // public Coin() {
-        // getCoinSound = new GreenfootSound("sfx_coin.mp3");
+    
     // }
     public void act()
     {
@@ -28,8 +28,7 @@ public class Coin extends Actor
         Actor jumper = getOneIntersectingObject(Jumper.class);
         if (jumper != null) {
             World world = getWorld();
-            world.removeObject(this); // Menghapus koin saat dikumpulkan
-            // Tambahkan logika untuk penambahan skor koin pada karakter ('Jumper')
+            world.removeObject(this); 
         }
     }
 }
