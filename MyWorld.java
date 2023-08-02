@@ -50,6 +50,12 @@ public class MyWorld extends World
     
      public void act() {
         //tes
+        prep();
+        gameOverCheck();
+        
+    }
+    
+    private void prep() {
         if (!isGameStarted && !isGameOver) {
             // Jika permainan belum dimulai, tampilkan pesan "Press SPACE to Start"
             showText("Press SPACE to Start", getWidth() / 2, getHeight() / 2);
@@ -60,16 +66,7 @@ public class MyWorld extends World
                 isGameStarted = true;
                 startGame();
             } 
-        }  else if (isGameOver) {
-            // Jika permainan berakhir, pindah ke UI "Game Over"
-            Greenfoot.setWorld(new GameOver());
-            
-            // Hentikan music background dan putar sound "Game Over"
-            if (backgroundSound != null) {
-                backgroundSound.stop();
-            }
-            Greenfoot.playSound("bgs_gameOver.mp3");
-        } else {
+        }   else {
             // Jika permainan sudah dimulai, hapus pesan "Press SPACE to Start"
             showText("", getWidth() / 2, getHeight() / 2);
 
@@ -80,6 +77,7 @@ public class MyWorld extends World
 
             if (areCoinsCleared && jumper.isTouchingGate()) {
             // Berpindah ke LevelWorld setelah semua koin dihapus dan karakter menyentuh Gate
+            stopBackgroundSound();
             Greenfoot.setWorld(new LevelWorld());
             }
             
@@ -88,6 +86,18 @@ public class MyWorld extends World
                 backgroundSound = new GreenfootSound("bgs_jungle.wav");
                 backgroundSound.playLoop();
             }
+        }
+    }
+    
+    private void gameOverCheck() {
+        if (isGameOver) {
+            // Jika permainan berakhir, pindah ke UI "Game Over"
+            Greenfoot.setWorld(new GameOver());
+            //Hentikan music background dan putar sound "Game Over"
+            if (backgroundSound != null) {
+                backgroundSound.stop();
+            }
+            Greenfoot.playSound("bgs_gameOver.mp3");
         }
     }
     
@@ -107,6 +117,10 @@ public class MyWorld extends World
     
     public void gameOver() {
         isGameOver = true;
+    }
+    
+    public void stopBackgroundSound() {
+        backgroundSound.stop();
     }
     
     private void coin() {

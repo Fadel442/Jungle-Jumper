@@ -10,6 +10,9 @@ public class LevelWorld extends World
 {
     private Jumper jumper;
     private Gate gate;
+    private boolean isGameOver = false;
+    
+    private GreenfootSound backgroundSound;
 
     /**
      * Constructor for objects of class LevelWorld.
@@ -19,6 +22,7 @@ public class LevelWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 450, 1);
+        
         setPaintOrder(Platform.class, Jumper.class, Gate.class);
         prepare();
     }
@@ -34,7 +38,24 @@ public class LevelWorld extends World
     }
     
     public void act(){
+        if (backgroundSound == null) {
+                backgroundSound = new GreenfootSound("bgs_jungle.wav");
+                backgroundSound.playLoop();
+            }
         
+        if (isGameOver) {
+            // Jika permainan berakhir, pindah ke UI "Game Over"
+            Greenfoot.setWorld(new GameOver());
+            if (backgroundSound != null) {
+                backgroundSound.stop();
+            }
+            
+            Greenfoot.playSound("bgs_gameOver.mp3");
+        }
+    }
+    
+    public void gameOver() {
+        isGameOver = true;
     }
     
     private void addCoin() {
