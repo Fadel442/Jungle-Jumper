@@ -124,8 +124,17 @@ public class LevelWorld extends World
         addObject(viles2, 615, 280);
         
         //Death Tiles
-        Diles diles1 = new Diles();
+        Diles diles1 = new Diles(0, 0);
         addObject(diles1,705, 190);
+        
+        Diles diles2 = new Diles(80, 150);
+        addObject(diles2,120, 220);        
+        //
+        Wiles wiles1 = new Wiles(150,325);
+        addObject(wiles1, 335, 235);
+        
+        Wiles wiles2 = new Wiles(120,250);
+        addObject(wiles2, 555, 190);
         
         //End Tiles
         StartPlatform platform = new StartPlatform();

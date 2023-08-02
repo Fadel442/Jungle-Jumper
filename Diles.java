@@ -8,12 +8,19 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Diles extends Platform
 {
+    private int leftWidth; // Nilai lebar kiri
+    private int rightWidth; // Nilai lebar kanan
+    private int speed = 1; // Kecepatan pergerakan
+    
     private GreenfootSound screamSound;
     /**
      * Act - do whatever the Diles wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public Diles() {
+    public Diles(int leftWidth, int rightWidth) {
+        this.leftWidth = leftWidth;
+        this.rightWidth = rightWidth;
+        
         GreenfootImage platformImage = new GreenfootImage(150, 20);
         platformImage.setColor(Color.YELLOW);
         platformImage.fill();
@@ -24,6 +31,11 @@ public class Diles extends Platform
     
     public void act()
     {
+        setLocation(getX() + speed, getY());
+        if (getX() <= leftWidth || getX() >= rightWidth) {
+            speed = -speed; // Ubah arah pergerakan saat mencapai batasan
+        }
+        
         checkCollision();
         // Add your action code here.
     }

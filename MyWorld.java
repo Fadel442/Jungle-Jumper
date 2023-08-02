@@ -165,5 +165,9 @@ public class MyWorld extends World
         
         Viles viles2 = new Viles();
         addObject(viles2, 729, 185);
+        
+        //Death VerTiles
+        Wiles wiles1 = new Wiles(0,0);
+        addObject(wiles1,256, 340);
     }
 }
