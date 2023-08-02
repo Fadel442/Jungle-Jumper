@@ -10,7 +10,14 @@ public class Wiles extends Platform
 {
     private GreenfootSound screamSound;
     
-    public Wiles() {
+    private int topHeight; // Nilai tinggi atas
+    private int bottomHeight; // Nilai tinggi bawah
+    private int speed = 1; // Kecepatan pergerakan
+    
+    public Wiles(int topHeight, int bottomHeight) {
+        this.topHeight = topHeight;
+        this.bottomHeight = bottomHeight;
+        
         GreenfootImage platformImage = new GreenfootImage(20, 110);
         platformImage.setColor(Color.BLACK); 
         platformImage.fill();
@@ -21,6 +28,11 @@ public class Wiles extends Platform
     
     public void act()
     {
+        setLocation(getX(), getY() + speed);
+        if (getY() <= topHeight || getY() >= bottomHeight) {
+            speed = -speed; // Ubah arah pergerakan saat mencapai batasan
+        }
+        
         checkCollision();
     }
     

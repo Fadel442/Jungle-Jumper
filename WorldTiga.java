@@ -130,16 +130,16 @@ public class WorldTiga extends World
         addObject(viles2,525, 135);
         
         //Death Tiles
-        Diles diles1 = new Diles();
+        Diles diles1 = new Diles(0,0);
         addObject(diles1,525, 355 );
         
-        Diles diles2 = new Diles();
+        Diles diles2 = new Diles(430,580);
         addObject(diles2,450, 225 );
         
-        Wiles wiles1 = new Wiles();
+        Wiles wiles1 = new Wiles(210, 300);
         addObject(wiles1,133, 235);
         
-        Wiles wiles2 = new Wiles();
+        Wiles wiles2 = new Wiles(190, 300);
         addObject(wiles2,685, 210);
         
         //End Tiles
