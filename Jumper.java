@@ -61,17 +61,17 @@ public class Jumper extends Actor
         }
         
         else if(Greenfoot.isKeyDown("down") && onVerticalPlatform) {
-            moveUpDown(); // Bergerak ke bawah
+            moveUpDown(); 
             setLocation(getX(), getY() + 1);
         }
 
         else if (Greenfoot.isKeyDown("left")) {
-            move(-moveSpeed); // Bergerak ke kiri
+            move(-moveSpeed); 
             //setLocation(getX() - 1, getY());
         }
 
         else if (Greenfoot.isKeyDown("right")) {
-            move(moveSpeed); // Bergerak ke kanan
+            move(moveSpeed); 
             //setLocation(getX() + 1, getY());
         }
     }
@@ -82,13 +82,12 @@ public class Jumper extends Actor
     }
     
     private void moveUpDown() {
-        verticalSpeed = moveVertical; // Mengatur kecepatan vertikal untuk bergerak ke bawah
+        verticalSpeed = moveVertical; 
         onGround = false;
-        onVerticalPlatform = false; // Reset penanda saat bergerak ke bawah
+        onVerticalPlatform = false; 
     }
 
     private void checkCollision() {
-        // Cek apakah karakter menyentuh platform di bagian bawahnya
         if (isTouching(Platform.class) && verticalSpeed >= 0) {
             verticalSpeed = 0;
             onGround = true;
@@ -100,7 +99,7 @@ public class Jumper extends Actor
         if (isTouching(Viles.class) && verticalSpeed >= 0) {
             verticalSpeed = 0;
             onGround = true;
-            onVerticalPlatform = true; // Set penanda saat berada di atas VerticalPlatform
+            onVerticalPlatform = true; 
         }
     }
     
@@ -111,12 +110,11 @@ public class Jumper extends Actor
             getCoinSound.play();
             world.removeObject(coin);
 
-            // Cek coinBar mana yang kosong dan tambahkan koin ke coinBar tersebut
             for (int i = 0; i < coinBars.length; i++) {
                 if (coinBars[i] == null || coinBars[i].getCoins() == 0) {
                     if (coinBars[i] == null) {
                         coinBars[i] = new CoinBar();
-                        world.addObject(coinBars[i], 100 + i * 75, 50); // Atur posisi coinBar yang baru
+                        world.addObject(coinBars[i], 100 + i * 45, 55); // Atur posisi coinBar yang baru
                     }
                     coinBars[i].addCoin();
                     break;
@@ -141,6 +139,6 @@ public class Jumper extends Actor
         else if(currWorld instanceof WorldTiga) {
             ((WorldTiga) getWorld()).gameOver();
         }
-        getWorld().removeObject(this); // Hapus karakter dari dunia
+        getWorld().removeObject(this); 
     }
 }

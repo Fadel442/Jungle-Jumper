@@ -8,15 +8,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Viles extends Platform
 {
+    private GreenfootImage platformImage;
+    
     /**
      * Act - do whatever the Viles wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     
     public Viles() {
-        GreenfootImage platformImage = new GreenfootImage(30, 125);
-        platformImage.setColor(Color.RED); 
-        platformImage.fill();
+        platformImage = new GreenfootImage("wood_tile.png");
         setImage(platformImage);
     }
     

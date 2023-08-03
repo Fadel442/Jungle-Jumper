@@ -8,15 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
-
-    /**
-     * Constructor for objects of class MyWorld.
-     * 
-     */
     private Jumper jumper;
     private Gate gate;
-    // private int cameraOffsetX;
-    // private int cameraOffsetY;
     
     private boolean areCoinsCleared = false;
     private boolean isJumperTouchingGate = false;
@@ -24,11 +17,15 @@ public class MyWorld extends World
     private boolean isGameStarted = false;
     private boolean isGameOver = false;
     private GreenfootSound backgroundSound;
+    private GreenfootImage bgImage;
     
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 450, 1); 
+        bgImage = new GreenfootImage("Trees 1.png");
+        bgImage.scale(getWidth(), getHeight());
+        setBackground(bgImage);
         
         setPaintOrder(Platform.class, Jumper.class, Gate.class);
     }
@@ -40,10 +37,8 @@ public class MyWorld extends World
     
     private void prep() {
         if (!isGameStarted && !isGameOver) {
-            // Jika permainan belum dimulai, tampilkan pesan "Press SPACE to Start"
             showText("Press SPACE to Start", getWidth() / 2, getHeight() / 2);
             
-            // Cek apakah tombol SPACE ditekan untuk memulai permainan
             if (Greenfoot.isKeyDown("space")) {
                 isGameStarted = true;
                 startGame();
@@ -52,7 +47,6 @@ public class MyWorld extends World
             showText("", getWidth() / 2, getHeight() / 2);
 
             if (!areCoinsCleared) {
-            // Periksa apakah semua koin telah dihapus
             areCoinsCleared = areAllCoinsCleared();
             }
 
@@ -61,7 +55,6 @@ public class MyWorld extends World
             Greenfoot.setWorld(new LevelWorld());
             }
             
-            // Memulai sound loop hanya setelah permainan dimulai
             if (backgroundSound == null) {
                 backgroundSound = new GreenfootSound("bgs_jungle.wav");
                 backgroundSound.playLoop();
@@ -82,7 +75,7 @@ public class MyWorld extends World
     
     private void startGame() {
         jumper = new Jumper();
-        addObject(jumper, getWidth() - 720, getHeight() - 225); // Letakkan Jumper di bawah layar pada posisi tengah
+        addObject(jumper, getWidth() - 720, getHeight() - 225); 
         gate = new Gate();
         addObject(gate, 625, 45);
         

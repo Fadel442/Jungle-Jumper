@@ -19,9 +19,7 @@ public class Wiles extends Platform
         this.topHeight = topHeight;
         this.bottomHeight = bottomHeight;
         
-        platformImage = new GreenfootImage("tes.png");
-        //platformImage.setColor(Color.BLACK); 
-        //platformImage.fill();
+        platformImage = new GreenfootImage("death_vertical_tiles.png");
         setImage(platformImage);
         
         screamSound = new GreenfootSound("sfx_scream.mp3");

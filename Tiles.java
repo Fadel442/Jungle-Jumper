@@ -8,14 +8,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Tiles extends Platform
 {
+    private GreenfootImage platformImage;
+    
     /**
      * Act - do whatever the Tiles wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public Tiles() {
-        GreenfootImage platformImage = new GreenfootImage(100, 20);
-        platformImage.setColor(Color.BLUE); 
-        platformImage.fill();
+        platformImage = new GreenfootImage("horizontal_tiles.png");
         setImage(platformImage);
     }
     public void act()

@@ -15,6 +15,7 @@ public class LevelWorld extends World
     private boolean isJumperTouchingGate = false;
     
     private GreenfootSound backgroundSound;
+    private GreenfootImage bgImage;
 
     /**
      * Constructor for objects of class LevelWorld.
@@ -24,6 +25,9 @@ public class LevelWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 450, 1);
+        bgImage = new GreenfootImage("Trees 2.png");
+        bgImage.scale(getWidth(), getHeight());
+        setBackground(bgImage);
         
         setPaintOrder(Platform.class, Jumper.class, Gate.class);
         prepare();
@@ -62,12 +66,10 @@ public class LevelWorld extends World
     
     private void coinCheck() {
         if (!areCoinsCleared) {
-            // Periksa apakah semua koin telah dihapus
             areCoinsCleared = areAllCoinsCleared();
             }
 
             if (areCoinsCleared && jumper.isTouchingGate()) {
-            // Berpindah ke LevelWorld setelah semua koin dihapus dan karakter menyentuh Gate
             backgroundSound.stop();
             Greenfoot.setWorld(new WorldTiga());
             }

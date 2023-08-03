@@ -11,6 +11,7 @@ public class Diles extends Platform
     private int leftWidth; // Nilai lebar kiri
     private int rightWidth; // Nilai lebar kanan
     private int speed = 1; // Kecepatan pergerakan
+    private GreenfootImage platformImage;
     
     private GreenfootSound screamSound;
     /**
@@ -21,9 +22,7 @@ public class Diles extends Platform
         this.leftWidth = leftWidth;
         this.rightWidth = rightWidth;
         
-        GreenfootImage platformImage = new GreenfootImage(150, 20);
-        platformImage.setColor(Color.YELLOW);
-        platformImage.fill();
+        GreenfootImage platformImage = new GreenfootImage("death_horizontal_tiles.png");
         setImage(platformImage);
         
         screamSound = new GreenfootSound("sfx_scream.mp3");

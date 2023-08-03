@@ -10,14 +10,6 @@ public class Coin extends Actor
 {
     private GreenfootSound getCoinSound;
     
-    /**
-     * Act - do whatever the Coin wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    
-    // public Coin() {
-    
-    // }
     public void act()
     {
         checkCollision();

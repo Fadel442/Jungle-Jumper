@@ -15,6 +15,7 @@ public class WorldTiga extends World
     private boolean isJumperTouchingGate = false;
     
     private GreenfootSound backgroundSound;
+    private GreenfootImage bgImage;
 
     /**
      * Constructor for objects of class WorldTiga.
@@ -24,6 +25,9 @@ public class WorldTiga extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 450, 1);
+        bgImage = new GreenfootImage("Trees 3.png");
+        bgImage.scale(getWidth(), getHeight());
+        setBackground(bgImage);
         
         setPaintOrder(Platform.class, Jumper.class, Gate.class);
         prepare();
