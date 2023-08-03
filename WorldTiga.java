@@ -1,11 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class WorldTiga here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class WorldTiga extends World
 {
     private Jumper jumper;
@@ -66,7 +60,6 @@ public class WorldTiga extends World
     
     private void coinCheck() {
         if (!areCoinsCleared) {
-            // Periksa apakah semua koin telah dihapus
             areCoinsCleared = areAllCoinsCleared();
             }
 

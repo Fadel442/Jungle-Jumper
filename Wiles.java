@@ -1,18 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class Wiles here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Wiles extends Platform
 {
     private GreenfootSound screamSound;
     
-    private int topHeight; // Nilai tinggi atas
-    private int bottomHeight; // Nilai tinggi bawah
-    private int speed = 1; // Kecepatan pergerakan
+    private int topHeight; 
+    private int bottomHeight; 
+    private int speed = 1; 
     private GreenfootImage platformImage;
     
     public Wiles(int topHeight, int bottomHeight) {
@@ -34,7 +28,7 @@ public class Wiles extends Platform
     {
         setLocation(getX(), getY() + speed);
         if (getY() <= topHeight || getY() >= bottomHeight) {
-            speed = -speed; // Ubah arah pergerakan saat mencapai batasan
+            speed = -speed; 
         }
         
         checkCollision();

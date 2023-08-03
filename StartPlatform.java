@@ -1,22 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class StartPlatform here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class StartPlatform extends Platform
 {
     private GreenfootSound deadSound;
-    /**
-     * Act - do whatever the StartPlatform wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private GreenfootImage platformImage;
+
     public StartPlatform() {
-        GreenfootImage platformImage = new GreenfootImage(800, 20);
-        platformImage.setColor(Color.GREEN); 
-        platformImage.fill();
+        platformImage = new GreenfootImage("end_tiles.png");
         setImage(platformImage);
         
         deadSound = new GreenfootSound("sfx_water.mp3");
