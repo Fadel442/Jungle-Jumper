@@ -13,17 +13,23 @@ public class Wiles extends Platform
     private int topHeight; // Nilai tinggi atas
     private int bottomHeight; // Nilai tinggi bawah
     private int speed = 1; // Kecepatan pergerakan
+    private GreenfootImage platformImage;
     
     public Wiles(int topHeight, int bottomHeight) {
         this.topHeight = topHeight;
         this.bottomHeight = bottomHeight;
         
-        GreenfootImage platformImage = new GreenfootImage(20, 110);
-        platformImage.setColor(Color.BLACK); 
-        platformImage.fill();
+        platformImage = new GreenfootImage("tes.png");
+        //platformImage.setColor(Color.BLACK); 
+        //platformImage.fill();
         setImage(platformImage);
         
         screamSound = new GreenfootSound("sfx_scream.mp3");
+    }
+    
+    public void setPlatformImage(String imageFileName) {
+        platformImage = new GreenfootImage(imageFileName);
+        setImage(platformImage);
     }
     
     public void act()
