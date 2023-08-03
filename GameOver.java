@@ -8,13 +8,18 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class GameOver extends UI
 {
-
-    /**
-     * Constructor for objects of class GameOver.
-     * 
-     */
+    private GreenfootImage bgImage;
+    
     public GameOver()
     {
-        showText("Game Over", getWidth() / 2, getHeight() / 2);
+        bgImage = new GreenfootImage("bg_gameover.png");
+        bgImage.scale(getWidth(), getHeight());
+        setBackground(bgImage); 
+        
+        addObject(new lg_GameOver(), getWidth()/2, 150);
+        
+        btn_restart restart = new btn_restart();
+        addObject(restart, getWidth() / 2, 355);
+        //showText("Game Over", getWidth() / 2, getHeight() / 2);
     }
 }
