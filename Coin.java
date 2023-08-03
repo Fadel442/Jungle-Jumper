@@ -7,7 +7,6 @@ public class Coin extends Actor
     public void act()
     {
         checkCollision();
-        // Add your action code here.
     }
     
     private void checkCollision() {
