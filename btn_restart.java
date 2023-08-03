@@ -21,7 +21,8 @@ public class btn_restart extends Button
 
     private void restartGame() {
         World currentWorld = getWorld();
-        World newWorld = new MyWorld(); 
+        World newWorld = new MyWorld();
+        Greenfoot.delay(100);
         Greenfoot.setWorld(newWorld);
     }
 }
