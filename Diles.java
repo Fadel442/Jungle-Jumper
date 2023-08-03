@@ -1,16 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class Diles here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Diles extends Platform
 {
-    private int leftWidth; // Nilai lebar kiri
-    private int rightWidth; // Nilai lebar kanan
-    private int speed = 1; // Kecepatan pergerakan
+    private int leftWidth; 
+    private int rightWidth; 
+    private int speed = 1; 
     private GreenfootImage platformImage;
     
     private GreenfootSound screamSound;
@@ -32,11 +26,10 @@ public class Diles extends Platform
     {
         setLocation(getX() + speed, getY());
         if (getX() <= leftWidth || getX() >= rightWidth) {
-            speed = -speed; // Ubah arah pergerakan saat mencapai batasan
+            speed = -speed; 
         }
         
         checkCollision();
-        // Add your action code here.
     }
     
     private void checkCollision() {

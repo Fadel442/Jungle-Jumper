@@ -1,11 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class btn_restart here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class btn_restart extends Button
 {
     public btn_restart() {

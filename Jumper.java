@@ -1,11 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class Jumper here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Jumper extends Actor
 {
     /**
@@ -13,9 +7,9 @@ public class Jumper extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     private int verticalSpeed = 0;
-    private int jumpStrength = -15; // Kekuatan lompatan
-    private int acceleration = 1; // Kecepatan gravitasi
-    private int moveSpeed = 4; // Kecepatan bergerak ke kiri dan kanan
+    private int jumpStrength = -15; 
+    private int acceleration = 1; 
+    private int moveSpeed = 4; 
     private int moveVertical = 4;
     private boolean onGround = false;
     private boolean onVerticalPlatform = false; 
@@ -28,10 +22,9 @@ public class Jumper extends Actor
     
     public Jumper() {
         coinBars = new CoinBar[3];
-        // Inisialisasi coinBars dengan referensi ke tiga CoinBar
+    
         jumpSound = new GreenfootSound("sfx_jump.mp3");
         getCoinSound = new GreenfootSound("sfx_coin.mp3");
-        
     }
 
     public void act() {
@@ -114,7 +107,7 @@ public class Jumper extends Actor
                 if (coinBars[i] == null || coinBars[i].getCoins() == 0) {
                     if (coinBars[i] == null) {
                         coinBars[i] = new CoinBar();
-                        world.addObject(coinBars[i], 100 + i * 45, 55); // Atur posisi coinBar yang baru
+                        world.addObject(coinBars[i], 100 + i * 45, 55); // Atur posisi coinBar 
                     }
                     coinBars[i].addCoin();
                     break;
