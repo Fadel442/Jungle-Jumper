@@ -137,8 +137,8 @@ public class WorldTiga extends World
         Diles diles1 = new Diles(0,0);
         addObject(diles1,525, 355 );
         
-        Diles diles2 = new Diles(430,580);
-        addObject(diles2,450, 225 );
+        //Diles diles2 = new Diles(430,580);
+        //addObject(diles2,450, 225 );
         
         Wiles wiles1 = new Wiles(210, 300);
         addObject(wiles1,133, 235);
